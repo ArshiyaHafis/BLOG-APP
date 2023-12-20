@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <h5>email: {{ user.email }}</h5>
+        <h4><a class="button-link" href="{% url 'add_project' %}">Create a project</a></h4>
+        <h4><a class="button-link" href="{% url 'project' %}">Delete a project</a></h4>
+        <h4><a class="button-link" href="{% url 'project' %}">Update a project</a></h4>
+    {% else %}
+        <h4>Please log in to access the content.</h4>
+        <a href="{% url 'login' %}">Log in</a>
+    {% endif %}
+{% endblock %}

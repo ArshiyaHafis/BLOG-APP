@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %} 
+{% block content %}
+<h4>{{msg}}</h4>
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    {% endif %}
+    {% for field, errors in error %}
+    {% for i in errors %}
+      <li>{{ field }}: {{ i }}</li>
+    {% endfor %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<header>
+	<nav class="top">
+		<ul class="centered-list">
+			<li class="centered-item">
+				<a href="/"><img src="{% static 'img/logo.jpg' %}" /></a>
+			</li>
+			<li class="centered-item title">Arshiya's Blog</li>
+		</ul>
+	</nav>
+
+<div class = "container">
+	<nav class = "main">
+		<ul>
+			<li><a href="{% url 'about' %}">ABOUT ME</a></li>
+			<li><a href="{% url 'project' %}">PROJECTS</a></li>
+			<li><a href="#">PHOTOGRAPHY</a></li>
+			<li><a href="{% url 'blog' %}">BLOG</a></li>
+		</ul>
+	</nav>
+	<nav class = "auth">
+		<ul>
+			{% if user.is_authenticated %}
+				<li><a href = "{% url 'logout' %}">LOGOUT</a></li>
+				<li><a href = "{% url 'dashboard' %}">DASHBOARD</a></li>
+			{% else %}
+				<li><a href = "{% url 'login' %}">LOGIN</a></li>
+				<li><a href = "{% url 'register' %}">REGISTER</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+</div>
+</header> 

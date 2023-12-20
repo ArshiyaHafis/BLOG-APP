@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %} 
+{% block content %}
+
+
+{% for i in info %}
+	<h4 class = "intro">{{i.blog_title}}</h4>
+	<div class = "post">
+		<h4 class = "intro">{{i.blog_content}}</h4>
+		<div class="blog-image">
+			<img srcset="/media/{{ i.blog_image }}" alt="Image description">
+		</div>
+	</div>
+{% if user.is_superuser %}
+	{% with title=i.blog_title %}
+    <h4><a class="button-link" href="{% url 'del_blog' title=title id=i.id %}">Delete a post</a></h4>
+    <h4><a class="button-link" href="{% url 'upd_blog' title=title id=i.id %}">Update a post</a></h4>
+	{% endwith %}
+{% endif %}
+
+{% endfor %}
+{% endblock %}

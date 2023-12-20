@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %} 
+{% block content %}
+<h4>{{msg}}</h4>
+{% if user.is_superuser %}
+    Hi {{ user.username }}!
+    <h4><a class="button-link" href="{% url 'add_blog' %}">Create a post</a></h4>
+{% else %}
+    Welcome
+{% endif %}
+{% for i in posts %}
+    <div class='project'>
+        <h1 class='project-title'>
+            {% with title=i.blog_title %}
+                <a href="{% url 'blogpost' title=title id=i.id%}">{{ i.blog_date }} - {{ i.blog_title }}</a>
+            {% endwith %}
+        </h1>
+        <ul class='project-details'>
+            {% if i.blog_content|wordcount > 50 %}
+                <li>{{ i.blog_content|truncatewords:50 }} <span class="more-link"></span></li>
+            {% else %}
+                <li>{{ i.blog_content }}</li>
+            {% endif %}
+            <li><img srcset="/media/{{ i.blog_image }}" class='project-image'/></li>
+        </ul>
+    </div>
+{% endfor %}
+
+{% endblock %}

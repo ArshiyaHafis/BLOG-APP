@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <article>
+    <h1>REGISTER</h1>
+    <!--Begin row-->
+    <div class="row">
+      <!--Begin col-->
+      <div class="column">
+        <form action="" method="post">
+          {% csrf_token %}
+          {% for i in form %}
+          <div>
+            <p>{{i.label}} : <br> {{i}} </p>
+          </div>
+          {% endfor %}
+          <input type="submit" id="button">
+        </form>
+      </div>
+      <!--End col-->
+    </div>
+    <!--End row-->
+  </article>
+{% endblock %}

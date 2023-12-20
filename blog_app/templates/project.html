@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+{% endif %}
+
+{% for i in projects %}
+    <div class='project'>
+        <h1 class='project-title'>
+            {{ i.user.username }} - {{ i.project_name }}
+        </h1>
+        <ul class='project-details'>
+            <li><a href="{{ i.project_link }}">PROJECT LINK</a></li>
+            <li><a href="{{ i.project_repo }}">PROJECT REPOSITORY</a></li>
+            <li>{{ i.project_descp }}</li>
+            <li><img srcset="/media/{{ i.project_image}}" class='project-image'/></li>
+        </ul>
+        {% if user.is_authenticated %}
+            {% with name=i.project_name %}
+                <a href="{% url 'delete_project' name=name id=i.id %}" class="del_button">Delete</a>
+                <a href="{% url 'update_project' name=name id=i.id %}" class="upd_button">Update</a>
+            {% endwith %}
+        {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}

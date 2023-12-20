@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %} 
+{% block content %}
+<h4 class = "intro">HI I AM ARSHIYA</h4>
+<h4 class = "intro">Welcome to my personal website! I am a passionate second-year student studying Computer Science at NIT-Calicut. With a strong inclination towards web development, problem-solving, and data structures and algorithms, I am constantly seeking opportunities to expand my knowledge and skills in these areas.
+
+  Beyond my academic pursuits, I am driven by a deep passion for photography. Capturing moments and conveying emotions through the lens brings me immense joy and allows me to express my creativity. Photography has taught me to see the world from different perspectives and has enhanced my attention to detail.
+  
+  As a member of the Computer Science Association, I actively participate in various events, fests, and hackathons. These experiences have not only sharpened my technical skills but have also fostered a collaborative spirit and the ability to thrive in a team environment. I thrive on the challenges and excitement that come with these events and find immense satisfaction in delivering innovative solutions.
+  
+  With a strong foundation in computer science and an eagerness to learn, I constantly seek opportunities to apply my knowledge in real-world scenarios. I believe in the power of technology to bring about positive change, and I am determined to contribute to this ever-evolving field.
+  
+  Feel free to explore my website to learn more about my projects, experiences, and journey as a student and a web developer. Thank you for visiting, and I look forward to connecting with you!</h4>
+<div class = 'references'>
+<a href="https://github.com/ArshiyaHafis">
+    <img src="{% static 'img/git.png' %}" alt="linkedin Icon">
+  </a>
+<a href="https://www.linkedin.com/in/arshiya-padiyath-hafis-76237b230/">
+    <img src="{% static 'img/linkdin.png' %}" alt="linkedin Icon">
+  </a>
+<a href="mailto:arshiyapadiyath@gmail.com">
+    <img src="{% static 'img/mail.png' %}" alt="Mail Icon">
+  </a>
+  </div>
+{% endblock %}
